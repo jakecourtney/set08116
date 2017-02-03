@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\40282244\Desktop\set08116\labs\practicals\13_Rotating_Triangle\13_Rotating_Triangle.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\40282244\Desktop\set08116\labs\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{CBC91D18-8F4F-3E7D-A765-64F95E3E8C84}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
