@@ -28,10 +28,18 @@ void create_sierpinski(geometry &geom) {
   for (auto i = 1; i < num_points; ++i) {
     // *********************************
     // Add random point
+	  default_random_engine e;
+	  auto n = e();
+	  
+	  uniform_int_distribution<int> dist(0, 2);
 
+	  auto n = dist(e);
+
+	  
     // Add colour - all points red
 
-    // *********************************
+    // ********************************
+	  point(k) = (point(k - 1) + v (rand)) / 2.0f;
   }
   // *********************************
   // Add buffers to geometry

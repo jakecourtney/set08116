@@ -5,6 +5,9 @@ using namespace std;
 using namespace graphics_framework;
 using namespace glm;
 
+
+class SierpinskiTriangle {
+
 geometry geom;
 effect eff;
 target_camera cam;
@@ -22,6 +25,7 @@ void divide_triangle(const vector<vec3> &points, unsigned int count, vector<vec3
   // *********************************
   // IF we have more divisions to do?
 
+	   
     // Calculate new vertices to work on
 
     // Divide new triangles
@@ -89,4 +93,6 @@ void main() {
   application.set_render(render);
   // Run application
   application.run();
+
+  
 }

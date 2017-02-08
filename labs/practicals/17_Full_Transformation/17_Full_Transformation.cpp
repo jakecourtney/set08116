@@ -71,14 +71,19 @@ bool render() {
   // Bind effect
   renderer::bind(eff);
   mat4 T, R, S, M;
+  float angle = 1.0f;
   // *********************************
   // Create transformation matrices
   // ******************************
 
+  S = scale(mat4(1.0f), vec3(5.0f, 5.0f, 0.0f));
 
+  T = translate(mat4(1.0f), vec3(5.0f, 5.0f, 0.0f));
+
+  R = rotate(mat4(1.0f), angle, vec3(1.0f, 0.0f, 0.0f));
 
   // Combine matrices to set M - remember multiplication order
-
+  M = T * (R * S);
   // *********************************
   // Create MVP matrix
   auto V = cam.get_view();

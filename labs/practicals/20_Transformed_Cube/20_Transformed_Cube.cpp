@@ -16,12 +16,49 @@ float s = 1.0f;
 bool load_content() {
   // Create cube data - twelve triangles triangles
   // Positions
+	
+
   vector<vec3> positions{
       // *********************************
       // Add the position data for triangles here, (6 verts per side)
       // Front
 
-
+	  vec3(-1.0f,-1.0f,-1.0f),
+	  vec3(-1.0f,-1.0f, 1.0f),
+	  vec3(-1.0f, 1.0f, 1.0f),
+	  vec3(1.0f, 1.0f,-1.0f),
+	  vec3(-1.0f,-1.0f,-1.0f),
+	  vec3(-1.0f, 1.0f,-1.0f),
+	  vec3(1.0f,-1.0f, 1.0f),
+	  vec3(-1.0f,-1.0f,-1.0f),
+	  vec3(1.0f,-1.0f,-1.0f),
+	  vec3(1.0f, 1.0f,-1.0f),
+	  vec3(1.0f,-1.0f,-1.0f),
+	  vec3(-1.0f,-1.0f,-1.0f),
+	  vec3(-1.0f,-1.0f,-1.0f),
+	  vec3(-1.0f, 1.0f, 1.0f),
+	  vec3(-1.0f, 1.0f,-1.0f),
+	  vec3(1.0f,-1.0f, 1.0f),
+	  vec3(-1.0f,-1.0f, 1.0f),
+	  vec3(-1.0f,-1.0f,-1.0f),
+	  vec3(-1.0f, 1.0f, 1.0f),
+	  vec3(-1.0f,-1.0f, 1.0f),
+	  vec3(1.0f,-1.0f, 1.0f),
+	  vec3(1.0f, 1.0f, 1.0f),
+	  vec3(1.0f,-1.0f,-1.0f),
+	  vec3(1.0f, 1.0f,-1.0f),
+	  vec3(1.0f,-1.0f,-1.0f),
+	  vec3(1.0f, 1.0f, 1.0f),
+	  vec3(1.0f,-1.0f, 1.0f),
+	  vec3(1.0f, 1.0f, 1.0f),
+	  vec3(1.0f, 1.0f,-1.0f),
+	  vec3(-1.0f, 1.0f,-1.0f),
+	  vec3(1.0f, 1.0f, 1.0f),
+	  vec3(-1.0f, 1.0f,-1.0f),
+	  vec3(-1.0f, 1.0f, 1.0f),
+	  vec3(1.0f, 1.0f, 1.0f),
+	  vec3(-1.0f, 1.0f, 1.0f),
+	  vec3(1.0f,-1.0f, 1.0f)
       // Back
 
 
@@ -36,7 +73,7 @@ bool load_content() {
 
       // Bottom
 
-
+	  M = T * (R * S)
       // *********************************
   };
   // Colours
@@ -64,6 +101,35 @@ bool load_content() {
 
 bool update(float delta_time) {
   // *********************************
+	float angle = 1.0f;
+	mat4 T, R, S, M;
+
+	M = T * (R * S);
+
+	S = scale(mat4(1.0f), vec3(5.0f, 5.0f, 0.0f));
+
+	T = translate(mat4(1.0f), vec3(5.0f, 5.0f, 0.0f));
+
+	R = rotate(mat4(1.0f), angle, vec3(1.0f, 0.0f, 0.0f));
+
+	
+		// Check if key is pressed
+		if (glfwGetKey(renderer::get_window(), GLFW_KEY_UP)) {
+			pos += vec3(0.0f, 0.0f, -5.0f) * delta_time;
+		}
+		if (glfwGetKey(renderer::get_window(), GLFW_KEY_DOWN)) {
+			pos += vec3(0.0f, 0.0f, 5.0f) * delta_time;
+		}
+		if (glfwGetKey(renderer::get_window(), GLFW_KEY_LEFT)) {
+			pos += vec3(-5.0f, 0.0f, 0.0f) * delta_time;
+		}
+		if (glfwGetKey(renderer::get_window(), GLFW_KEY_RIGHT)) {
+			pos += vec3(5.0f, 0.0f, 0.0f) * delta_time;
+		}
+		// Update the camera
+		cam.update(delta_time);
+		return true;
+	
   // Use keys to update transform values
   // WSAD - movement
   // Cursor - rotation

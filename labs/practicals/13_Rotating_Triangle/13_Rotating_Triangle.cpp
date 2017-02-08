@@ -10,6 +10,8 @@ effect eff;
 target_camera cam;
 float theta = 0.0f;
 
+
+
 bool load_content() {
   // Create triangle data
   // Positions
@@ -45,9 +47,11 @@ bool update(float delta_time) {
 bool render() {
   // Bind effect
   renderer::bind(eff);
-  mat4 R;
+  float angle = 1.0f;
   // *********************************
   // Create rotation matrix - rotate around Z axis by theta
+    mat4 R = rotate(mat4(1.0f), angle, vec3(0.0f, 0.0f, 1.0f));
+
 
   // *********************************
   // Create MVP matrix
