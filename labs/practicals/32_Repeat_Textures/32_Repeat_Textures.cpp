@@ -39,7 +39,7 @@ bool load_content() {
   // Build effect
 
   // Load texture "textures/sign.jpg"
-
+  glUniformMatrix4fv(eff.get_uniform_location("MVP"), 1, GL_FALSE, value_ptr(MVP));
   // *********************************
 
   // Set camera properties
