@@ -8,8 +8,9 @@ using namespace glm;
 mesh m;
 effect eff;
 target_camera cam;
+#define Med_Purple = colour red 0.73 green 0.16 blue 0.96
 #define NapierRed 0.765f, 0.082f, 0.196f
-
+# define glUniform1f (< value >);#define glUniform4f{vec3(0.0f, 1.0f, 0.0f), vec3(-1.0f, -1.0f, 0.0f), vec3(1.0f, -1.0f, 0.0f)};
 bool load_content() {
   // Construct geometry object
   geometry geom;
@@ -27,7 +28,7 @@ bool load_content() {
   eff.add_shader("29_Shaders/colour.frag", GL_FRAGMENT_SHADER);
   // *********************************
   // Build effect
-
+  eff.build();
   // *********************************
 
   // Set camera properties
@@ -60,9 +61,9 @@ bool render() {
                      value_ptr(MVP));                 // Pointer to matrix data
   // *********************************
   // Set the colour value for the shader here (Hint: rep the Brand, use the NapierRed macro)
-
+  glUniform4fv(eff.get_uniform_location("colour"), 1, value_ptr(vec4(NapierRed, 1.0f)));
   // *********************************
-
+  
   // Render the mesh
   renderer::render(m);
 
@@ -70,6 +71,7 @@ bool render() {
 }
 
 void main() {
+
   // Create application
   app application;
   // Set load content, update and render methods

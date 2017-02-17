@@ -8,6 +8,8 @@ using namespace glm;
 mesh m;
 effect eff;
 target_camera cam;
+GLuint shader;
+GLuint program;
 
 bool load_content() {
   // Construct geometry object
@@ -23,7 +25,7 @@ bool load_content() {
 
   // *********************************
   // Create mesh object here
-
+  m = mesh(geom);
   // *********************************
 
   // Load in shaders
@@ -51,7 +53,15 @@ bool update(float delta_time) {
   }
   // *********************************
 
-
+  if (glfwGetKey(renderer::get_window(), 'S' )) {
+	  m.get_transform() .position -= vec3(0.0f, 0.0f,-5.0f) * delta_time;
+  }
+  if (glfwGetKey(renderer::get_window(), 'D' )) {
+	  m.get_transform().position -= vec3(0.0f, 5.0f, 0.0f)* delta_time;
+  }
+  if (glfwGetKey(renderer::get_window(), 'A')) {
+	  m.get_transform().position -= vec3(5.0f, 0.0f, 0.0f)* delta_time;
+  }
 
 
 
@@ -91,9 +101,12 @@ bool render() {
   mat4 M;
   // *********************************
   // Get the model transform from the mesh
-
+   M = m.get_transform().get_transform_matrix();  
+   
   // *********************************
+  
   // Create MVP matrix
+
   auto V = cam.get_view();
   auto P = cam.get_projection();
   auto MVP = P * V * M;
@@ -101,7 +114,7 @@ bool render() {
   glUniformMatrix4fv(eff.get_uniform_location("MVP"), 1, GL_FALSE, value_ptr(MVP));
   // *********************************
   // Render the mesh here
-
+  renderer::render(m);
   // *********************************
   return true;
 }

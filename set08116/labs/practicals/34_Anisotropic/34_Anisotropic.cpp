@@ -11,7 +11,7 @@ effect eff;
 free_camera cam;
 // Four textures
 array<texture, 4> texs;
-
+texture tex;
 bool load_content() {
   // Construct geometry object
   geometry geom;
@@ -42,15 +42,20 @@ bool load_content() {
 
   // ******************************
   // Load textures sign.jpg
+ // texs [4] = texture("textures/sign.jpg");
   // 0 - no mipmaps, no anisotropic
+  texs[0] = texture("textures/sign.jpg", false, false);
   // 1 - no mipmaps, anisotropic
+  texs[1] = texture("textures/sign.jpg", false, true);
   // 2 - mipmaps, no anisotropic
+  texs[2] = texture("textures/sign.jpg", true, false);
   // 3 - mipmaps, anisotropic
+  texs[3] = texture("textures/sign.jpg", true, true);
   // ******************************
-  texs[0] = texture("textures/checker.png", false, false);
-  texs[1] = texture("textures/checker.png", false, true);
-  texs[2] = texture("textures/checker.png", true, true);
-  texs[3] = texture("textures/checker.png", true, true);
+  
+ 
+  
+  
 
   // Set camera properties
   cam.set_position(vec3(10.0f, 2.0f, 200.0f));

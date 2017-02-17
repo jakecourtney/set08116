@@ -36,6 +36,8 @@ bool load_content() {
   return true;
 }
 
+
+
 bool update(float delta_time) {
   // Accumulate time
   total_time += delta_time;

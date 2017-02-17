@@ -11,7 +11,7 @@ effect eff;
 target_camera cam;
 // Two textures
 array<texture, 3> texs;
-
+#define NapierRed 0.765f, 0.082f, 0.196f
 bool load_content() {
   // Construct geometry object
   geometry geom;
@@ -29,9 +29,9 @@ bool load_content() {
   // Create three mesh objects - reuse geometry
   for (auto &m : meshes) {
     // *********************************
-
+	  m = mesh(geom);
     // Scale each mesh by 10
-
+	 m.get_transform().scale = vec3(5.0f, 5.0f, 5.0f);
     // *********************************
   }
 
@@ -93,11 +93,11 @@ bool render() {
 
     // *********************************
     // Bind correct texture to renderer
-
+	renderer::bind(texs[0], 1);
     // Set the texture value for the shader here
-
+	glUniform4fv(eff.get_uniform_location("colour"), 1, value_ptr(vec4(NapierRed, 1.0f)));
     // Render the mesh
-
+	renderer::render(meshes[i]);
     // *********************************
   }
 
