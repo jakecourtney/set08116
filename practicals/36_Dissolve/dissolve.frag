@@ -16,10 +16,10 @@ layout(location = 0) out vec4 colour;
 void main() {
   // *********************************
   // Get dissolve value from the dissolve texture
-
+  
   // If r component is greater than dissolve factor, discard
 
-
+  
 
   // *********************************
 

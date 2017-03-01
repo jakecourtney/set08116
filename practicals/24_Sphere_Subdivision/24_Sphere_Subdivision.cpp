@@ -10,16 +10,25 @@ effect eff;
 target_camera cam;
 float theta = 0.0f;
 float rho = 0.0f;
-
+float a, b, c;
 const int subdivisions = 5;
+
 
 void divide_triangle(const vector<vec3> &points, int divisions, vector<vec3> &positions, vector<vec4> &colours) {
   // IF we have more divisions to do?
   if (divisions > 0) {
     // *********************************
     // Calculate new vertices to work on (Normalize each element!)
+	
+	      vec3(0.0f, 1.0f, 0.0f),  
+		  vec3(-1.0f, -1.0f, 0.0f),
+		  vec3(1.0f, -1.0f, 0.0f);
 
+	 vec3 a = (v[0] + v[1]).normalize();
+	 vec3  b = (v[1] + v[2]).normalize();
+	 vec3 c = (v[0] + v[2]).normalize();
 
+	     
     // Divide new triangles
 
 
@@ -39,7 +48,7 @@ bool load_content() {
   vector<vec3> positions;
   vector<vec4> colours;
   // Define the initial tetrahedron - 4 points
-  vector<vec3> v{vec3(0.0f, 0.0f, 1.0f), vec3(0.0f, 0.942809f, -0.333333f), vec3(-0.816497f, -0.471405f, -0.333333f),
+  vector<vec3> v {vec3(0.0f, 0.0f, 1.0f), vec3(0.0f, 0.942809f, -0.333333f), vec3(-0.816497f, -0.471405f, -0.333333f),
                  vec3(0.816497f, -0.471405f, 0.333333f)};
   // Divide the triangles
   divide_triangle({v[0], v[1], v[2]}, subdivisions, positions, colours);
